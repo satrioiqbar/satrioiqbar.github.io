@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kasir Sederhana</title>
+    <link rel="stylesheet" href="betuk.css">
+  </head>
+  <body>
+    <h1>Pembayaran</h1>
+    <form>
+      <label for="produk">Produk:</label>
+      <input type="text" id="produk" name="produk"><br><br>
+      <label for="jumlah">Jumlah:</label>
+      <input type="number" id="jumlah" name="jumlah"><br><br>
+      <label for="harga">Harga:</label>
+      <input type="number" id="harga" name="harga"><br><br>
+      <button type="button" onclick="hitung()">Tambahkan</button>
+    </form>
+    <h2>Daftar Belanja</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Produk</th>
+          <th>Jumlah</th>
+          <th>Harga</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="daftar-belanja">
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Total:</td>
+          <td id="total">0</td>
+        </tr>
+      </tfoot>
+    </table>
+    <script>
+      function hitung() {
+        var produk = document.getElementById("produk").value;
+        var jumlah = document.getElementById("jumlah").value;
+        var harga = document.getElementById("harga").value;
+        var subtotal = jumlah * harga;
+        var row = "<tr><td>" + produk + "</td><td>" + jumlah + "</td><td>" + harga + "</td><td>" + subtotal + "</td></tr>";
+        document.getElementById("daftar-belanja").innerHTML += row;
+        document.getElementById("total").innerHTML = parseInt(document.getElementById("total").innerHTML) + subtotal;
+      }
+    </script>
+  </body>
+</html>
